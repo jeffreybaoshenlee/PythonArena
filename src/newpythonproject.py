@@ -7,3 +7,4 @@ __date__ ="$2014/7/11 上午 12:13:06$"
 
 if __name__ == "__main__":
     print("Hello World")
+    print("hi world!")
