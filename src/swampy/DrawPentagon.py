@@ -1,4 +1,4 @@
-#from jeffrey import *
+from jeffrey import *
 
 #polygon(4,100,turtle)
 #polygonWithLine(5,120,turtle)
