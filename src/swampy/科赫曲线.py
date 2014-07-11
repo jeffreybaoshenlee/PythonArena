@@ -9,25 +9,25 @@ if __name__ == "__main__":
     print("Hello World")
     print("hi world!")
 from math import *
-from TurtleWorld import * 
-world = TurtleWorld.TurtleWorld()
-t=TurtleWorld.Turtle(world)
+from TurtleWorld import *
+import time
+
 def aa(x):
-	b = float(x/3)
-	t.fd(b)
-	t.lt(60)
-	t.fd(b)
-	t.lt(240)
-	t.fd(b)
-	t.lt(60)
-	t.fd(b)
+        b = float(x/3)
+        t.fd(b)
+        t.lt(60)
+        t.fd(b)
+        t.lt(240)
+        t.fd(b)
+        t.lt(60)
+        t.fd(b)
 def bb(x,n):
-	if n>0:
-		aa(x)
-		t.lt(60)
-		bb(x,n-1)
-		aa(x)
-		t.lt(240)
+        if n>0:
+                aa(x)
+                t.lt(60)
+                bb(x,n-1)
+                aa(x)
+                t.lt(240)
                 aa(x)
                 t.lt(60)
                 aa(x)
@@ -36,11 +36,14 @@ def bb(x,n):
                 t.lt(60)
                 aa(x)
                 t.lt(240)
-		aa(x)
+                aa(x)
                 t.lt(60)
-		bb(x,n-1)		
-		aa(x)
-	else:
-		t.lt(360)    
-    
+                bb(x,n-1)		
+                aa(x)
+        else:
+                t.lt(360)
 
+world = TurtleWorld()
+t=Turtle(world)
+bb(100,8)
+time.sleep(5)
