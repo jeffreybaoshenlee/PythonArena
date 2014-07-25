@@ -26,8 +26,29 @@ def is_palindrome_no_debug(word):
         
     return True
 
+def is_palindrome_gentle(word):
+    length = len(word)
+    frontIndex=0
+    backIndex=length-1
+    
+    while frontIndex<backIndex:
+        frontLetter = word[frontIndex]
+        backLetter = word[backIndex]
+        
+        if (frontLetter!=backLetter):
+            return False
+        
+        frontIndex+=1;
+        backIndex-=1;
+    return True
+
 if __name__ == '__main__':
     for testee in ["rotator","lol","meow","blob"]:
         result = is_palindrome(testee)
+        print(result)
+        print()
+        
+    for testee in ["rotator","lol","meow","blob"]:
+        result = is_palindrome_gentle(testee)
         print(result)
         print()
