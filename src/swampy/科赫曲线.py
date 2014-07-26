@@ -44,4 +44,4 @@ def ff(x,n):
     for i in range(3):
         ee(x,n)
         t.lt(240)
-ff(15,4)        
+ff(15,3)        
