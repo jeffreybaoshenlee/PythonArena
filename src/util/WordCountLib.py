@@ -22,11 +22,22 @@ def count_word_without(filename, letterToExclude):
     
     return count
 
-filename= 'words.txt'
-minimumLength=21
-result = count_word(filename,minimumLength);
-print("The number of the words whose length is at least "+str(minimumLength)+" is: "+str(result))
+def histogram(string):
+    result = dict()
+    for char in string:
+        count=result.get(char,0)
+        result[char]=count+1
+    
+    return result
 
-letterToExclude='e'
-result = count_word_without(filename,letterToExclude);
-print("The number of the words without the letter \""+letterToExclude+"\" is: "+str(result))
+if __name__=='__main__':
+    filename= 'words.txt'
+    minimumLength=21
+    result = count_word(filename,minimumLength);
+    print("The number of the words whose length is at least "+str(minimumLength)+" is: "+str(result))
+
+    letterToExclude='e'
+    result = count_word_without(filename,letterToExclude);
+    print("The number of the words without the letter \""+letterToExclude+"\" is: "+str(result))
+
+    print(histogram('brontosaurus'));
