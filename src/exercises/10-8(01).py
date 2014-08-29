@@ -8,5 +8,19 @@ def has_duplicates(t):
             index=index+1
 
     return index>0
+
+def has_duplicates_lite(t):
+    foundChars=[]
+    for char in t:
+        if char not in foundChars:
+            foundChars.append(char)
+        else:
+            return True
+
+    return False
         
 print(has_duplicates([1,2,3]))
+print(has_duplicates_lite([1,2,3]))
+
+print(has_duplicates([3,1,2,3]))
+print(has_duplicates_lite([3,1,2,3]))
