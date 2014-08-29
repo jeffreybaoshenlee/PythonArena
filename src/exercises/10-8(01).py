@@ -11,4 +11,4 @@ def has_duplicates(t):
         return True
     else:
         print(res)
-has_duplicates([1,2,3,3])        
+has_duplicates([1,2,3])        
