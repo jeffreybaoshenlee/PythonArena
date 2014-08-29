@@ -6,9 +6,7 @@ def has_duplicates(t):
             res.append(s)
         else:
             index=index+1
-    if index>0:
-        print('suck')
-        return True
-    else:
-        print(res)
-has_duplicates([1,2,3])        
+
+    return index>0
+        
+print(has_duplicates([1,2,3]))
