@@ -1,12 +1,12 @@
 import os.path
-import os,sys
-def aa():
+import sys
+
+def replace_word():
     nargs=len(sys.argv)
     if not 3<=nargs <=5:
         print("usage: %s search_text replace_text [infile [outfile]]"
                 % os.path.basename(sys.argv[0]))
         print(sys.argv[0])
-
     else:
         stext=sys.argv[1]
         rtext=sys.argv[2]
@@ -18,6 +18,8 @@ def aa():
             output_file = open(sys.argv[4],'w')
         for s in input_file:
             output_file.write(s.replace(stext,rtext))
-        output.close()
-        input.close()
+        output_file.close()
+        input_file.close()
         
+if __name__=='__main__':
+    replace_word()
