@@ -8,8 +8,8 @@ class Rectangle:
     def __init__(self):
         self.bbox=[[-150,-100],[150,100]]
 
-def draw_rectangle(my_canvas,rect):
-    my_canvas.canvas.rectangle(rect.bbox,outline="black",width=2,fill="green4")
+def draw_rectangle(a,b):
+    a.canvas.rectangle(b.bbox,outline="black",width=2,fill="green4")
 
 world=World.World()
 canvas=Canvas()
