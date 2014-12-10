@@ -1,4 +1,6 @@
 import turtle
-t=turtle.pen()
+t=turtle.Turtle()
 t.forward(90)
-wait_for_user
+
+import time
+time.sleep(5)
