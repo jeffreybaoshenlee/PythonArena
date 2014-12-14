@@ -1,9 +1,18 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+from tkinter import *
+import random
+import time
+tk=Tk()
+canvas=Canvas(tk,width=400,height=400)
+canvas.pack()
 
-__author__="fov"
-__date__ ="$2014-12-7 17:46:01$"
-
-if __name__ == "__main__":
-    print "Hello World"
+def random_rectangle(width,height,fill_color):
+      x1=random.randrange(width)
+      y1=random.randrange(height)
+      x2=(x1+random.randrange(width))
+      y2=(y1+random.randrange(height))
+      canvas.create_rectangle(x1,y1,x2,y2,fill=fill_color)
+     
+for x in range( 0,100):
+    random_rectangle(400,400,"orange")
+    
+canvas.mainloop()
