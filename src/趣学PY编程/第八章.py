@@ -15,4 +15,4 @@ def random_rectangle(width,height,fill_color):
 for x in range( 0,100):
     random_rectangle(400,400,"orange")
     
-time.sleep(7)
+canvas.mainloop()
