@@ -67,22 +67,22 @@ class Coords:
                 return True
         return False
     def collided_left(co1,co2):
-        if within_y(co1,co2):
+        if Coords.within_y(co1,co2):
             if co1.x1 <= co2.x2 and co1.x1 >= co2.x1:
                 return True
         return False
     def collided_right(co1,co2):
-        if within_y(co1,co2):
+        if Coords.within_y(co1,co2):
             if co1.x2 >=co2.x1 and co1.x2 <= co2.x2:
                 return True
         return False
     def collided_top(co1,co2):
-        if within_x(co1,co2):
+        if Coords.within_x(co1,co2):
             if co1.y1 <=co2.y2 and co1.y1 >=co2.y1:
                 return True
         return False
     def collided_bottom(y,co1,co2):
-        if within_x(co1,co2):
+        if Coords.within_x(co1,co2):
             y_calc=co1.y2+y
             if y_calc >=co2.y1 and y_calc <= co2.y2:
                 return True
@@ -185,7 +185,7 @@ class StickFigureSprite(Sprite):
         bottom=True
         falling=True
         if self.y >0 and co.y2 >= self.game.canvas_height:
-            sely.y=0
+            self.y=0
         elif self.y <0 and co.y1 <=0:
             self.y=0
             top = False
@@ -200,10 +200,10 @@ class StickFigureSprite(Sprite):
             if sprite==self:
                 continue
             sprite_co = sprite.coords()
-            if top and self.y <0 and collided_top(co,sprite_co):
+            if top and self.y <0 and Coords.collided_top(co,sprite_co):
                 self.y = -self.y
                 top=False
-            if bottom and self.y >0 and collided_bottom(self.y,\
+            if bottom and self.y >0 and Coords.collided_bottom(self.y,\
                co,sprite_co):
                    self.y = sprite_co.y1-co.y2
                    if self.y <0:
@@ -212,12 +212,12 @@ class StickFigureSprite(Sprite):
                        top =False
             if bottom and falling and self.y == 0\
                 and co.y2 <self.game.canvas_height\
-                and collided_bottom(1,co,sprite_co):
+                and Coords.collided_bottom(1,co,sprite_co):
                 falling = False
-            if left and self.x <0 and collided_left(co,sprite_co):
+            if left and self.x <0 and Coords.collided_left(co,sprite_co):
                 self.x = 0
                 left = False
-            if right and self.x >0 and collided_right(co,sprite_co):
+            if right and self.x >0 and Coords.collided_right(co,sprite_co):
                 self.x= 0
                 right =False
             if falling and bottom and self.y == 0 \
