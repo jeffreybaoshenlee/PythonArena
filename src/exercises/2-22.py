@@ -9,7 +9,7 @@ def getMode():
             print('Enter either"encrypt" or "e" or "decrypt" or "d"')
 def getMessage():
     print('enter your message:')
-    return input
+    return input()
 def getKey():
     key=0
     while True:
