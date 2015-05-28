@@ -22,4 +22,6 @@ if __name__ == "__main__":
     print(safe_division(1,10**500,False,False));
 #    print(safe_division(1.0,10**500,False,False));
     print(safe_division(1.0,10**500,True,False));
+#   The overflow is actually ocurring in the conversion from 10**500 to its
+#       corresponding float value.
     print(safe_division(1.0,10**500,False,False));
