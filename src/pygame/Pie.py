@@ -1,82 +1,46 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# Circle Demo
+# Chapter 5
 
-__author__ = "huiqiangfov"
-__date__ = "$2015-5-7 22:49:10$"
-import math,sys,pygame
+import random, math, pygame
 from pygame.locals import *
+
+#main program begins
 pygame.init()
-screen= pygame.display.set_mode((600,600))
-myfont = pygame.font.Font(None,60)
+screen = pygame.display.set_mode((600,500))
+pygame.display.set_caption("Circle Demo")
+screen.fill((0,0,100))
 
-color =200,80,60
-width = 4 
-x =300
-y=250
+pos_x = 300
+pos_y = 250
 radius = 200
-position = x-radius,y-radius,radius*2,radius*2
+angle = 360
 
-piece1= False
-piece2= False
-piece3=False
-piece4= False
-
+#repeating loop
 while True:
     for event in pygame.event.get():
-        if event.type==QUIT:
+        if event.type == QUIT:
             sys.exit()
-        elif event.type ==KEYUP:
-            if event.key ==pygame.K_ESCAPE:
-                sys.exit()
-            elif event.key ==pygame.K_1:
-                piece1=True
-                
-            elif event.key == pygame.K_2:
-                piece2 = True
-            elif event.key == pygame.K_3:
-                piece3 = True
-            elif event.key == pygame.K_4:
-                piece4 = True
-    screen.fill((0,0,200))
+    keys = pygame.key.get_pressed()
+    if keys[K_ESCAPE]:
+        sys.exit()
+
+    #increment angle
+    angle += 1
+    if angle >= 360:
+        angle = 0
+        r = random.randint(0,255)
+        g = random.randint(0,255)
+        b = random.randint(0,255)
+        color = r,g,b
+
+    #calculate coordinates
+    x = math.cos( math.radians(angle) ) * radius
+    y = math.sin( math.radians(angle) ) * radius
+
+    #draw one step around the circle
+    pos = ( int(pos_x + x), int(pos_y + y) )
+    pygame.draw.circle(screen, color, pos, 10, 6)
+
     
-    textImg1 = myfont.render("1",True,color)
-    screen.blit(textImg1,(x+radius/2-20,y-radius/2))
-    textImg2 = myfont.render("2",True,color)
-    screen.blit(textImg2,(x-radius/2,y-radius/2))
-    textImg3=myfont.render("3",True,color)
-    screen.blit(textImg3,(x-radius/2,y+radius/2-20))
-    textImg4= myfont.render("4",True,color)
-    screen.blit(textImg4,(x+radius/2-20,y+radius/2-20))
-    
-    if piece1:
-        start_angle= math.radians(0)
-        end_angle = math.radians(90)
-        pygame.draw.arc(screen,color,position,start_angle,end_angle,width)
-        pygame.draw.line(screen,color,(x,y),(x,y-radius),width)
-        pygame.draw.line(screen,color,(x,y),(x+radius,y),width)
-        
-    if piece2:
-        start_angle = math.radians(90)
-        end_angle = math.radians(180)
-        pygame.draw.arc(screen,color,position,start_angle,end_angle,width)
-        pygame.draw.line(screen,color,(x,y),(x,y-radius),width)
-        pygame.draw.line(screen,color,(x,y),(x-radius,y),width)
-    if piece3:
-        start_angle=math.radians(180)
-        end_angle=math.radians(270)
-        pygame.draw.arc(screen,color,position,start_angle,end_angle,width)
-        pygame.draw.line(screen,color,(x,y),(x-radius,y),width)
-        pygame.draw.line(screen,color,(x,y),(x,y+radius),width)
-        
-    if piece4:
-        start_angle = math.radians(270)
-        end_angle = math.radians(360)
-        pygame.draw.arc(screen,color,position,start_angle,end_angle,width)
-        pygame.draw.line(screen,color,(x,y),(x,y+radius),width)
-        pygame.draw.line(screen,color,(x,y),(x+radius,y),width)
-        
-    if piece1 and piece2 and piece3 and piece4:
-        color = 0,255,0
     pygame.display.update()
     
