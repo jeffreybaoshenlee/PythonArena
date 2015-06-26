@@ -12,7 +12,7 @@ def double_fun_two_step():
     x = 5
     while True:
         result = x * 2
-        x = (yield result)
+        x = yield result
         print("Coroutine's loop executed")
         print('Current x: {:d}'.format(x))
 
