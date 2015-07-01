@@ -6,6 +6,13 @@ def factorize(number):
         if number % i == 0:
             yield i
 
+def gcd(pair):
+    a, b = pair
+    low = min(a, b)
+    for i in range(low, 0, -1):
+        if a % i == 0 and b % i == 0:
+            return i
+
 if __name__ == '__main__':
     numbers = [2139079, 1214759, 1516637, 1852285, 2139079, 1214759, 1516637, 1852285]
     
