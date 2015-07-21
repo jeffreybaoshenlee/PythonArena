@@ -15,6 +15,11 @@ def gen_random_bits(bit_count):
     
     return result
                         
+def gen_random_numbers(max_value, count=None):
+    if count == None:
+        count = max_value
+    data = [random.randint(0, max_value) for _ in range(count)]
+    return data
 
 if __name__ == "__main__":
     bit_count = 64
