@@ -6,7 +6,7 @@ import os
 
 class MyObject(object):
     def __init__(self):
-        self.x = os.urandom(10000)
+        self.x = os.urandom(20000)
         self.y = hashlib.sha1(self.x).hexdigest()
 
 def get_data():
@@ -33,3 +33,18 @@ if __name__ == "__main__":
     print('%d objects after' % len(found_objects))
     for obj in found_objects[:3]:
         print(repr(obj)[:100])
+    
+    import tracemalloc
+    tracemalloc.start(10) # Save up to 10 stack frames
+
+    time1 = tracemalloc.take_snapshot()
+    x = run()
+    time2 = tracemalloc.take_snapshot()
+    stats = time2.compare_to(time1, 'lineno')
+ 
+    for stat in stats:
+        print(stat)
+        
+    stats = time2.compare_to(time1, 'traceback')
+    top = stats[0]
+    print('\n'.join(top.traceback.format()))
