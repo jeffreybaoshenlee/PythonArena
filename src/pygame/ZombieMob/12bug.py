@@ -11,7 +11,6 @@ timer = pygame.time.Clock()
 player_group = pygame.sprite.Group()
 player = MySprite()
 player.load("farmer walk.png", 96, 96, 8)
-print('start3')
 player.position = 80, 80
 player_group.add(player)
 
