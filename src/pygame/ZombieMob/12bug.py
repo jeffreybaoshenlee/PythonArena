@@ -23,7 +23,6 @@ def reverse_direction(sprite):
         sprite.direction = 4
     elif sprite.direction == 2:
         sprite.direction = 6
-        print(sprite.direction)
     elif sprite.direction == 4:
         sprite.direction = 0
     elif sprite.direction == 6:
