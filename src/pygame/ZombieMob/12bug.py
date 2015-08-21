@@ -4,7 +4,6 @@ from pygame.locals import *
 import random
 import sys
  
-
 pygame.init()
 
 def calc_velocity(direction, vel=1.0):
@@ -23,7 +22,8 @@ def reverse_direction(sprite):
     if sprite.direction == 0:
         sprite.direction = 4
     elif sprite.direction == 2:
-        sprite.direction == 6
+        sprite.direction = 6
+        print(sprite.direction)
     elif sprite.direction == 4:
         sprite.direction = 0
     elif sprite.direction == 6:
@@ -111,8 +111,9 @@ while True:
                 z.frame = z.first_frame
             
             z.velocity = calc_velocity (z.direction)
-            z.X += z.velocity.x
-            z.Y += z.velocity.y
+            z.X += z.velocity.x * 6
+            z.Y += z.velocity.y * 6
+            
             if z.X < 0 or z.X > 700 or z.Y < 0 or z.Y > 500:
                 reverse_direction(z)
             
