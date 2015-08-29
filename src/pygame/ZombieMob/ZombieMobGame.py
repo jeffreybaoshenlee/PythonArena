@@ -5,7 +5,7 @@ import itertools, sys, time, random, math, pygame
 from pygame.locals import *
 from MyLibrary import *
 
-def calc_velocity(direction, vel=1.0):
+def calc_velocity(direction, vel=4.0):
     velocity = Point(0,0)
     if direction == 0: #north
         velocity.y = -vel
@@ -48,7 +48,7 @@ player_group.add(player)
 
 #create the zombie sprite
 zombie_image = pygame.image.load("zombie walk.png").convert_alpha()
-for n in range(0, 10):
+for n in range(0, 20):
     zombie = MySprite()
     zombie.load("zombie walk.png", 96, 96, 8)
     zombie.position = random.randint(0,700), random.randint(0,500)
@@ -108,7 +108,7 @@ while True:
             player.velocity.y *= 1.5
 
         #update player sprite
-        player_group.update(ticks, 50)
+        player_group.update(ticks, 100)
 
         #manually move the player
         if player_moving:
