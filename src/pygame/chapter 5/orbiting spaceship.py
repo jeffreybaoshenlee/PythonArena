@@ -21,8 +21,8 @@ class Point(object):
     y = property(gety, sety)
         
     def __str__(self):
-        return "(X: " + "(:.of )".format(self.__x) + \
-            ",Y: " + " (: .of)".format(self.__y) + ")"
+        return "(X: " + "{:.0f}".format(self.__x) + \
+            ",Y: " + " {: .0f}".format(self.__y) + ")"
                 
 def print_text(font, x, y, text, color=(255, 255, 255)):
     imgText = font.render(text, True, color)
@@ -43,9 +43,8 @@ width, height = ship.get_size()
 ship = pygame.transform.smoothscale(ship, (width // 2, height // 2))
 
 radius = 250
-angle = 0.0
+angle = 90
 pos = Point(0, 0)
-old_pos = Point(0, 0)
 
 while True:
     for event in pygame.event.get():
@@ -58,26 +57,18 @@ while True:
     screen.blit(space, (0, 0))
     
     angle = wrap_angle(angle-0.1)
-    pos.x = math.sin(math.radians(angle)) * radius
-    pos.y = math.cos(math.radians(angle)) * radius
-    
-    delta_x = (pos.x - old_pos.x)
-    delta_y = (pos.y-old_pos.y)
-    rangle = math.atan2(delta_y, delta_x)
-    rangled = wrap_angle(-math.degrees(rangle))
-    scratch_ship = pygame.transform.rotate(ship, rangled)
+    pos.x = math.cos(math.radians(angle)) * radius
+    pos.y = math.sin(math.radians(angle)) * radius
+
+    rotate_angle = -wrap_angle(angle-90)
+    scratch_ship = pygame.transform.rotate(ship, rotate_angle)
     
     width, height = scratch_ship.get_size()
     x = 400 + pos.x-width // 2
     y = 300 + pos.y -height // 2
     screen.blit(scratch_ship, (x, y))
     
-    print_text(font, 0, 0, "Orbit: " + "(:.of)".format(angle))
-    print_text(font, 0, 20, "Rotation:" + "(:.2f".format(rangle))
+    print_text(font, 0, 0, "Orbit: " + "{:.0f}".format(angle))
     print_text(font, 0, 40, "Position: " + str(pos))
-    print_text(font, 0, 60, "Old Pos : " + str(old_pos))
     
     pygame.display.update()
-    
-    old_pos.x = pos.x
-    old_pos.y = pos.y
