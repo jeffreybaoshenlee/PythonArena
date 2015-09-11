@@ -56,11 +56,11 @@ while True:
         
     screen.blit(space, (0, 0))
     
-    angle = wrap_angle(angle-0.1)
+    angle = wrap_angle(angle-1)
     pos.x = math.cos(math.radians(angle)) * radius
     pos.y = math.sin(math.radians(angle)) * radius
 
-    rotate_angle = -wrap_angle(angle-90)
+    rotate_angle = -wrap_angle(angle-120)
     scratch_ship = pygame.transform.rotate(ship, rotate_angle)
     
     width, height = scratch_ship.get_size()

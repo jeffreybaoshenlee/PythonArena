@@ -78,3 +78,5 @@ while True:
     print("x=" + str(x) + ";y=" + str(y))
     screen.blit(a.turn_image, (x, y))
     pygame.display.update()
+    a.old_pos.x = a.pos.x
+    a.old_pos.y = a.pos.y
