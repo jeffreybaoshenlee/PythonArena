@@ -123,14 +123,18 @@ def move_paddle():
         if waiting:
             waiting = False
             reset_ball()
-    elif keys[K_LEFT]: paddle.velocity.x = -10.0
-    elif keys[K_RIGHT]: paddle.velocity.x = 10.0
+    elif keys[K_LEFT]: 
+        paddle.velocity.x= -5.0
+        paddle.X += paddle.velocity.x
+    elif keys[K_RIGHT]: 
+        paddle.velocity.x = 5.0
+        paddle.X += paddle.velocity.x
     else:
         if movex < -2: paddle.velocity.x = movex
         elif movex > 2: paddle.velocity.x = movex
         else: paddle.velocity.x = 0
     
-    paddle.X += paddle.velocity.x
+   
     if paddle.X < 0: paddle.X = 0
     elif paddle.X > 710: paddle.X = 710
 
